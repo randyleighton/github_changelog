@@ -22,7 +22,7 @@ module Github
       response = open("#{@repo.api_url}/#{@repo.org}/#{@repo.repository}/commits?sha=#{sha}&per_page=100").read
       commits = JSON.parse(response)
       commits_by_date = {}
-      #return @commits if commits.include?(last_commit)
+      return @commits if commits.include?(last_commit)
       commits.each do |commit|
         puts "TAG: #{(@last_tag_commit || last_tag)}"
         puts "SHA: #{commit["sha"]}"

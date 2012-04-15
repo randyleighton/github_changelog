@@ -2,6 +2,12 @@
 ---------
 ###Updating changelog
 
+Last tag
+----------
+15/04/2012
+---------
+###Updating changelog
+
 ###Modifing repository for tests
 
 ###Adding last tag line in changelog.md

@@ -1,9 +1,9 @@
 module Github
   class Changelog
     
-    def initialize
-      user = Github::User.new('yurimello', 'inferno1010')
-      repo = Github::Repo.new("sucurilabs", "github_changelog", "master", 'dev', user)
+    def initialize(organization, repository, branch, tag_name)
+      user = Github::User.new
+      repo = Github::Repo.new(organization, repository, branch, tag_name, user)
       @parser = Github::Parser.new(repo)
     end
 

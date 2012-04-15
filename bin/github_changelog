@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+require 'optparse'
+path = File.dirname(__FILE__)
+require File.join('./', path, '..', 'lib', 'init.rb')
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: github_changelog [options]"
+
+  opts.on("-r", "--repository=<repository name>", "Repository") do |r|
+    options[:repository] = r 
+  end
+  opts.on("-o", "--organization=<organization name>", "Organization") do |o|
+    options[:organization] = o
+  end
+  opts.on("-b", "--branch=<branch name>", "Branch") do |b|
+    options[:branch] = b
+  end
+  opts.on("-t", "--tag=<tag name>", "Tag Name") do |t|
+    options[:tag] = t
+  end
+end.parse!
+
+unless options[:branch]
+  puts "Branch is required"
+  exit 1
+end
+
+unless options[:organization]
+  puts "Organization is required"
+  exit 1
+end
+
+unless options[:repository]
+  puts "Repository is required"
+  exit 1
+end
+
+unless options[:tag]
+  puts "Tag is required"
+  exit 1
+end
+
+puts options
+
+changelog = Github::Changelog.new(options[:organization], options[:repository], options[:branch], options[:tag])
+changelog.generate

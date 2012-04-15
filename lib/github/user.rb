@@ -2,9 +2,13 @@ module Github
   class User
     attr_accessor :username, :password
 
-    def initialize(username, password)
-      @username = username
-      @password = password
+    def initialize
+      puts "Enter username:"
+      @username = STDIN.gets().chomp
+      puts "Enter Passowrd:"
+      system "stty -echo"
+      @password = STDIN.gets().chomp
+      system "stty echo"
     end
 
     def authentication

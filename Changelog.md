@@ -1,5 +1,11 @@
 15/04/2012
 ---------
+###Removing Gemfile
+
+Last tag
+----------
+15/04/2012
+---------
 ###Removing test file
 
 ###Updating changelog

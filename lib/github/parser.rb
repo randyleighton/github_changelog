@@ -17,12 +17,15 @@ module Github
       end
     end
 
-    def commits_list(sha = nil)
+    def commits_list(sha = nil, last_commit = nil)
       sha ||= @repo.branch
       response = open("#{@repo.api_url}/#{@repo.org}/#{@repo.repository}/commits?sha=#{sha}&per_page=100").read
       commits = JSON.parse(response)
       commits_by_date = {}
+      #return @commits if commits.include?(last_commit)
       commits.each do |commit|
+        puts "TAG: #{(@last_tag_commit || last_tag)}"
+        puts "SHA: #{commit["sha"]}"
         return @commits if commit["sha"] == (@last_tag_commit || last_tag)
         date = Date.parse(commit["commit"]["committer"]["date"]).strftime("%d/%m/%Y")
 
@@ -32,7 +35,7 @@ module Github
           @commits[date] = [commit["commit"]["message"]]
         end
       end
-      commits_list(commits.last["sha"])
+      commits_list(commits.last["sha"], commits.last)
     end
   end
 end

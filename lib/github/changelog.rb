@@ -21,6 +21,7 @@ module Github
           changelog_file.write("####{message}\n\n")
         end
       end
+      changelog_file.write("Last tag\n----------\n") if last_changelog
       changelog_file.write(last_changelog)
       changelog_file.close
     end

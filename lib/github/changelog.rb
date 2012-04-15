@@ -3,7 +3,7 @@ module Github
     
     def initialize
       user = Github::User.new('yurimello', 'inferno1010')
-      repo = Github::Repo.new("sucurilabs", "dummy", "master", 'dev', user)
+      repo = Github::Repo.new("sucurilabs", "github_changelog", "master", 'dev', user)
       @parser = Github::Parser.new(repo)
     end
 

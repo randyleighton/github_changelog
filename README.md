@@ -6,6 +6,7 @@ Gem to generate changelog for a specific tag
 Install
 -------
 `gem build github_changelog.gemspec`
+
 `gem install -l github_changelog-0.0.1.gem`
 
 Usage
